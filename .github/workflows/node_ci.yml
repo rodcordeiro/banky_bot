@@ -1,0 +1,33 @@
+name: 'Code build validation'
+
+on:
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [main, develop]
+
+jobs:
+  Format:
+    name: Format code and run eslint
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    strategy:
+      fail-fast: false
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: 9
+          run_install: false
+      - name: Use Node.js 22.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: pnpm run build
+      # - run: npm test
