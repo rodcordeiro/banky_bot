@@ -9,17 +9,11 @@ export class TbUser1734710729858 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'bk_tb_bot_users',
+        name: 'bkb_tb_users',
         columns: [
           {
             name: 'id',
-            type: 'integer',
             isPrimary: true,
-            isGenerated: true,
-            generationStrategy: 'increment',
-          },
-          {
-            name: 'uuid',
             type: 'varchar',
             isGenerated: true,
             generationStrategy: 'uuid',
@@ -31,8 +25,7 @@ export class TbUser1734710729858 implements MigrationInterface {
           },
           {
             name: 'owner',
-            type: 'integer',
-            isNullable: false,
+            type: 'varchar',
           },
           {
             name: 'created_at',
@@ -55,11 +48,11 @@ export class TbUser1734710729858 implements MigrationInterface {
       }),
     );
     await queryRunner.createForeignKey(
-      'tb_bot_user',
+      'bkb_tb_users',
       new TableForeignKey({
         columnNames: ['owner'],
         referencedColumnNames: ['id'],
-        referencedTableName: 'TB_USERS',
+        referencedTableName: 'bk_tb_user',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
         name: 'FK_user_owner',
@@ -68,7 +61,7 @@ export class TbUser1734710729858 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('tb_bot_user', 'FK_user_owner');
-    await queryRunner.dropTable('tb_bot_user');
+    await queryRunner.dropForeignKey('bkb_tb_users', 'FK_user_owner');
+    await queryRunner.dropTable('bkb_tb_users');
   }
 }

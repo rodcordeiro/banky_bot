@@ -5,5 +5,3 @@ export { ParameterEntity, ParameterValueEntity } from './parameters.entity';
 export { PaymentsEntity } from './payments.entity';
 export { TransactionsEntity } from './transactions.entity';
 export { UsersEntity } from './users.entity';
-
-

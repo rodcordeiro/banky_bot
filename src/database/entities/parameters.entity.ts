@@ -6,10 +6,10 @@ import { UsersEntity } from './users.entity';
 @Entity('bk_tb_parameters')
 export class ParameterEntity extends BaseEntity {
   /** Columns */
-  @Column()
+  @Column({ type: 'varchar' })
   name!: string;
 
-  @Column()
+  @Column({ type: 'varchar' })
   key!: string;
 
   /** Joins */
@@ -20,7 +20,7 @@ export class ParameterEntity extends BaseEntity {
 @Entity('bk_tb_parameter_values')
 export class ParameterValueEntity extends BaseEntity {
   /** Columns */
-  @Column()
+  @Column({ type: 'varchar' })
   value!: string;
 
   /** Joins */

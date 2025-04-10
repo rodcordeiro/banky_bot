@@ -6,20 +6,13 @@ import { BaseEntity } from '../../common/entities/base.entity';
 export class UsersEntity extends BaseEntity {
   /** Columns */
 
-  @Column()
+  @Column({ type: 'varchar' })
   name!: string;
 
-  @Column()
+  @Column({ type: 'varchar' })
   username!: string;
-
-  @Column({ select: false })
-  password!: string;
-
-  @Column({ select: false })
-  refreshToken!: string;
 
   /** Joins */
 
   /** Methods */
-  
 }
