@@ -8,40 +8,21 @@ importers:
 
   .:
     dependencies:
-      '@eslint/js':
-        specifier: ^9.22.0
-        version: 9.24.0
-      eslint:
-        specifier: ^9.22.0
-        version: 9.24.0
-      globals:
-        specifier: ^15.15.0
-        version: 15.15.0
-      prettier:
-        specifier: ^3.5.3
-        version: 3.5.3
-      typescript:
-        specifier: ^5.8.2
-        version: 5.8.3
-      typescript-eslint:
-        specifier: ^8.26.1
-        version: 8.29.1(eslint@9.24.0)(typescript@5.8.3)
-    devDependencies:
       '@discordjs/builders':
         specifier: ^1.10.1
         version: 1.10.1
       '@rodcordeiro/lib':
-        specifier: ^1.1.2
-        version: 1.1.2
-      '@types/node':
-        specifier: ^22.13.10
-        version: 22.14.0
+        specifier: ^1.2.0
+        version: 1.2.0
       discord.js:
         specifier: ^14.18.0
         version: 14.18.0
       dotenv:
         specifier: ^16.4.7
         version: 16.4.7
+      globals:
+        specifier: ^16.0.0
+        version: 16.0.0
       mysql:
         specifier: ^2.18.1
         version: 2.18.1
@@ -54,6 +35,19 @@ importers:
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9.22.0
+        version: 9.24.0
+      '@types/node':
+        specifier: ^22.13.10
+        version: 22.14.0
+      eslint:
+        specifier: ^9.22.0
+        version: 9.24.0
+      prettier:
+        specifier: ^3.5.3
+        version: 3.5.3
       rimraf:
         specifier: ^6.0.1
         version: 6.0.1
@@ -63,6 +57,12 @@ importers:
       typeorm:
         specifier: ^0.3.21
         version: 0.3.22(reflect-metadata@0.2.2)
+      typescript:
+        specifier: ^5.8.2
+        version: 5.8.3
+      typescript-eslint:
+        specifier: ^8.26.1
+        version: 8.29.1(eslint@9.24.0)(typescript@5.8.3)
 
 packages:
 
@@ -326,8 +326,8 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
 
-  '@rodcordeiro/lib@1.1.2':
-    resolution: {integrity: sha512-pI85D4UsaBmgXE5qgTkX8+TdDk27BYT5FP8+RsKSwxZOcu4zieaHY12o188iG3S20pgIuTMq/a91JdrRRbScOQ==}
+  '@rodcordeiro/lib@1.2.0':
+    resolution: {integrity: sha512-2OtkTgkgbzBgoaV3GgcB3ebP+wBE7M1+osgMmCxyV4KvBfy3MDf7XxsakdNoEwJeKpasZTVMCO3M4pcKjUiHPw==}
     engines: {node: '>=18.0.0'}
 
   '@sapphire/async-queue@1.5.5':
@@ -664,8 +664,8 @@ packages:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
     engines: {node: '>=18'}
 
-  globals@15.15.0:
-    resolution: {integrity: sha512-7ACyT3wmyp3I61S4fG682L0VA2RGD9otkqGJIwNUMF1SWUombIIk+af1unuDYgMm082aHYwD+mzJvv9Iu8dsgg==}
+  globals@16.0.0:
+    resolution: {integrity: sha512-iInW14XItCXET01CQFqudPOWP2jYMl7T+QRQT+UNcR/iQncN/F0UNpgd76iFkBPgNQb4+X3LV9tLJYzwh+Gl3A==}
     engines: {node: '>=18'}
 
   graphemer@1.4.0:
@@ -1343,7 +1343,7 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
-  '@rodcordeiro/lib@1.1.2': {}
+  '@rodcordeiro/lib@1.2.0': {}
 
   '@sapphire/async-queue@1.5.5': {}
 
@@ -1750,7 +1750,7 @@ snapshots:
 
   globals@14.0.0: {}
 
-  globals@15.15.0: {}
+  globals@16.0.0: {}
 
   graphemer@1.4.0: {}
 

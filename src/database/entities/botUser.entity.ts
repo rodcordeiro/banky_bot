@@ -3,7 +3,7 @@ import { Entity, Column, JoinColumn, OneToOne } from 'typeorm';
 import { BaseEntity } from '../../common/entities/base.entity';
 import { UsersEntity } from './users.entity';
 
-@Entity({ name: 'bk_tb_bot_users' })
+@Entity({ name: 'bkb_tb_users' })
 export class BotUserEntity extends BaseEntity {
   /** COLUMNS */
   @Column({ type: 'varchar' })
@@ -15,5 +15,5 @@ export class BotUserEntity extends BaseEntity {
     eager: true,
   })
   @JoinColumn({ name: 'owner', referencedColumnName: 'id' })
-  owner?: number;
+  owner?: string;
 }

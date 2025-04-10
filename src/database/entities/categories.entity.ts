@@ -7,13 +7,13 @@ import { UsersEntity } from './users.entity';
 export class CategoriesEntity extends BaseEntity {
   /** Columns */
 
-  @Column()
+  @Column({ type: 'varchar' })
   name!: string;
 
   @Column({
     type: 'bool',
   })
-  positive!: boolean ;
+  positive!: boolean;
 
   @Column({
     type: 'bool',
@@ -33,18 +33,26 @@ export class CategoriesEntity extends BaseEntity {
     referencedColumnName: 'id',
   })
   owner?: string;
-  @ManyToOne(() => CategoriesEntity, (category: CategoriesEntity) => category.subcategories, {
-    nullable: true,
-  })
+  @ManyToOne(
+    () => CategoriesEntity,
+    (category: CategoriesEntity) => category.subcategories,
+    {
+      nullable: true,
+    },
+  )
   @JoinColumn({
     name: 'category',
     referencedColumnName: 'id',
   })
   category?: string;
 
-  @OneToMany(() => CategoriesEntity, (category :CategoriesEntity)=> category.category, {
-    nullable: true,
-  })
+  @OneToMany(
+    () => CategoriesEntity,
+    (category: CategoriesEntity) => category.category,
+    {
+      nullable: true,
+    },
+  )
   subcategories?: CategoriesEntity[];
   /** Methods */
 }

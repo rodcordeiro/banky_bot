@@ -18,7 +18,7 @@ export const AppDataSource = new DataSource({
   migrations: [migrationsPath],
   synchronize: false,
   migrationsRun: true,
-  migrationsTableName: 'bk_tb_bot_migrations',
+  migrationsTableName: 'bkb_tb_migrations',
   logging: process.env.NODE_ENV === 'development',
   name: 'database',
   // debug: true,

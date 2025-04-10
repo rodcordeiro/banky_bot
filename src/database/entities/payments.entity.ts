@@ -6,7 +6,7 @@ import { BaseEntity } from '../../common/entities/base.entity';
 export class PaymentsEntity extends BaseEntity {
   /** Columns */
 
-  @Column()
+  @Column({ type: 'varchar' })
   name!: string;
 
   /** Joins */

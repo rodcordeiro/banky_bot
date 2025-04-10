@@ -2,7 +2,7 @@ FROM node:22 AS builder
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-RUN npm install --ignore-scripts -g pnpm
+RUN npm install --ignore-scripts -g pnpm@9.15.0
 
 WORKDIR /bot
 

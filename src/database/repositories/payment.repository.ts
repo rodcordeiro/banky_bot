@@ -1,4 +1,5 @@
 import { AppDataSource } from '..';
-import { PaymentEntity } from '../entities';
+import { PaymentsEntity } from '../entities';
 
-export const PaymentTypeRepository = AppDataSource.getRepository(PaymentEntity);
+export const PaymentTypeRepository =
+  AppDataSource.getRepository(PaymentsEntity);

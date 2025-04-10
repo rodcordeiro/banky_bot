@@ -8,7 +8,7 @@ import { PaymentsEntity } from './payments.entity';
 export class AccountsEntity extends BaseEntity {
   /** Columns */
 
-  @Column()
+  @Column({ type: 'varchar' })
   name!: string;
 
   @Column({

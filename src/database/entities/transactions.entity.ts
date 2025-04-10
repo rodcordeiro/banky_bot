@@ -9,10 +9,10 @@ import { AccountsEntity } from './accounts.entity';
 export class TransactionsEntity extends BaseEntity {
   /** Columns */
 
-  @Column()
+  @Column({ type: 'varchar' })
   description!: string;
 
-  @Column()
+  @Column({ type: 'varchar' })
   date?: string;
 
   @Column({
@@ -23,6 +23,7 @@ export class TransactionsEntity extends BaseEntity {
   @Column({
     name: 'batch_id',
     nullable: true,
+    type: 'varchar',
   })
   batchId?: string;
 
