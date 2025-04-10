@@ -1,0 +1,1 @@
+[Invite](https://discord.com/oauth2/authorize?client_id=1359964256820265293&permissions=581377510730816&integration_type=0&scope=bot)
