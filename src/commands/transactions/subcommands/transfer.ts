@@ -52,7 +52,6 @@ export class TransferSubcommand {
 
     await interaction.deferReply({ ephemeral: true });
     try {
-      console.log('here');
       const options =
         interaction.options.data[0].options
           ?.map((option) => [option.name, option.value])
@@ -65,8 +64,6 @@ export class TransferSubcommand {
               content: 'Formato de data inválida!',
             });
       }
-      console.log('here 1');
-      console.log({ fields, user });
 
       await TransactionsService.createTransfer(
         fields.origin,

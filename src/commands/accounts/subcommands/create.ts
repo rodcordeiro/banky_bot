@@ -44,12 +44,10 @@ export class CreateAccountsCommand {
           .filter(Boolean) || [];
       const fields = Object.fromEntries(options);
 
-      console.log({ fields });
       const data = await AccountsService.create(
         { ...fields, paymentType: fields.payment },
         user,
       );
-      console.log({ fields, data });
       const embed = createEmbed(
         [data],
         (item) => [

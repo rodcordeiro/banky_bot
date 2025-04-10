@@ -59,7 +59,6 @@ export class TransactionsService {
     owner: UsersEntity,
     date?: Date,
   ) {
-    console.log({ origin, destiny });
     const originAccount = await AccountsService.findBy(owner, (qb) => {
       qb.andWhere('a.id = :id', { id: origin });
     });
@@ -67,7 +66,6 @@ export class TransactionsService {
     const destinyAccount = await AccountsService.findBy(owner, (qb) => {
       qb.andWhere('a.id= :id', { id: destiny });
     });
-    console.log({ originAccount, destinyAccount });
 
     if (!originAccount || !destinyAccount) throw new Error('Account not found');
 
