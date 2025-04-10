@@ -7,7 +7,7 @@ import {
   AutocompleteInteraction,
   ModalSubmitInteraction,
 } from 'discord.js';
-import { UserEntity } from '../../database/entities';
+import { UsersEntity } from '../../database/entities';
 
 export type BaseCommandType = {
   data:
@@ -18,7 +18,7 @@ export type BaseCommandType = {
   maintenance?: boolean;
   execute: (
     interaction: ChatInputCommandInteraction,
-    user?: UserEntity,
+    user?: UsersEntity,
   ) => Promise<void>;
   maintenanceActions: (
     interaction: ChatInputCommandInteraction,
@@ -26,7 +26,7 @@ export type BaseCommandType = {
   autocomplete?: (interaction: AutocompleteInteraction) => Promise<void>;
   modalHandler?: (interaction: ModalSubmitInteraction) => Promise<void>;
 };
-
+export type iBaseCommand = new () => BaseCommandType;
 // MessageContextMenuCommandInteraction
 export abstract class BaseCommand {
   data: BaseCommandType['data'];

@@ -2,8 +2,8 @@ import { SlashCommandBuilder, ChatInputCommandInteraction } from 'discord.js';
 import { UserServices } from '../../services/user.service';
 import { actionsMapper } from '../../common/helpers/messages.helper';
 import ListCategoriesCommand from './subcommands/list';
-import { BaseCommand } from '../../common/commands/base.command';
 import { UsersEntity } from '../../database/entities';
+import { iBaseCommand } from '../../common/commands/base.command';
 
 export default class CategoriesCommand {
   data = new SlashCommandBuilder()
@@ -20,7 +20,7 @@ export default class CategoriesCommand {
           ephemeral: true,
         });
       return await actionsMapper(
-        [ListCategoriesCommand] as unknown as BaseCommand[],
+        [ListCategoriesCommand] as unknown as iBaseCommand[],
         interaction,
         user.owner as unknown as UsersEntity,
       );
