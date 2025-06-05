@@ -37,7 +37,7 @@ export function createEmbed<T = Record<string, Value>>(
     .setTitle(options.title)
     .setThumbnail(
       options.thumbnail ??
-        'https://raw.githubusercontent.com/rodcordeiro/monetojs/refs/heads/main/src/assets/logo.png',
+        'https://raw.githubusercontent.com/rodcordeiro/banky_bot/refs/heads/main/src/assets/logo.png',
     );
   if (options.description) embed.setDescription(options.description);
   if (options.page)
