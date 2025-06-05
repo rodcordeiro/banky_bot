@@ -13,3 +13,8 @@ export class PaymentsEntity extends BaseEntity {
 
   /** Methods */
 }
+export enum PaymentTypesEnum {
+  INVESTMENT = 'investment',
+  CREDIT = 'credit',
+  DEBIT = 'debit',
+}

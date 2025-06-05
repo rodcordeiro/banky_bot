@@ -13,6 +13,8 @@ import { iBaseCommand } from '../../common/commands/base.command';
 import { CreateTransactionCommand } from './subcommands/create';
 import { ListTransactionsCommand } from './subcommands/list';
 import { TransferSubcommand } from './subcommands/transfer';
+import { PayCreditSubcommand } from './subcommands/payCredit';
+import { PaymentTypesEnum } from '../../database/entities/payments.entity';
 
 export default class TransactionsCommand {
   data = new SlashCommandBuilder()
@@ -20,6 +22,7 @@ export default class TransactionsCommand {
     .setDescription('List users last transactions')
     .addSubcommand(new TransferSubcommand().data)
     .addSubcommand(new CreateTransactionCommand().data)
+    .addSubcommand(new PayCreditSubcommand().data)
     .addSubcommand(new ListTransactionsCommand().data);
   // .addSubcommand(new UpdateTransactionCommand().data);
   async autocomplete(interaction: AutocompleteInteraction) {
@@ -40,6 +43,26 @@ export default class TransactionsCommand {
         .flatMap(({ name, id }) => ({ name, value: id }))
         .sort((a, b) => (a.name > b.name ? 1 : -1))
         .slice(0, 10);
+      return await interaction.respond(filtered);
+    }
+    if (['credit_account'].includes(focusedValue.name)) {
+      const accounts = await AccountsService.findBy(
+        user.owner as unknown as UsersEntity,
+        (qb) =>
+          qb.andWhere('b.name = :paymentType', {
+            paymentType: PaymentTypesEnum.CREDIT,
+          }),
+      );
+
+      filtered = accounts
+        .filter((account) =>
+          account.name?.toLowerCase().includes(focusedValue.value),
+        )
+        .flatMap(({ name, id }) => ({ name, value: id }))
+        .sort((a, b) => (a.name > b.name ? 1 : -1))
+        .slice(0, 10);
+
+      return await interaction.respond(filtered);
     }
 
     if (focusedValue.name === 'category') {
@@ -69,6 +92,7 @@ export default class TransactionsCommand {
         .flatMap(({ name, id }) => ({ name, value: id }))
         .slice(0, 10)
         .sort((a, b) => (a.name > b.name ? 1 : -1));
+      return await interaction.respond(filtered);
     }
     if (focusedValue.name === 'transaction') {
       const transactions = await TransactionsService.findAll(
@@ -90,8 +114,8 @@ export default class TransactionsCommand {
           name: description,
           value: id.toString(),
         }));
+      return await interaction.respond(filtered);
     }
-    await interaction.respond(filtered);
   }
   async execute(interaction: ChatInputCommandInteraction) {
     try {
@@ -106,6 +130,7 @@ export default class TransactionsCommand {
           CreateTransactionCommand,
           ListTransactionsCommand,
           TransferSubcommand,
+          PayCreditSubcommand,
         ] as unknown as iBaseCommand[],
         interaction,
         user.owner as unknown as UsersEntity,

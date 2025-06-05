@@ -59,11 +59,11 @@ export class TransactionsService {
     owner: UsersEntity,
     date?: Date,
   ) {
-    const originAccount = await AccountsService.findBy(owner, (qb) => {
+    const originAccount = await AccountsService.findOneBy(owner, (qb) => {
       qb.andWhere('a.id = :id', { id: origin });
     });
 
-    const destinyAccount = await AccountsService.findBy(owner, (qb) => {
+    const destinyAccount = await AccountsService.findOneBy(owner, (qb) => {
       qb.andWhere('a.id= :id', { id: destiny });
     });
 
@@ -71,9 +71,11 @@ export class TransactionsService {
 
     const originCategoryParam = await ParametersService.getByKey(
       'transference_origin_category',
+      owner.id,
     );
     const destinyCategoryParam = await ParametersService.getByKey(
       'transference_destiny_category',
+      owner.id,
     );
     const originCategory = await CategoryRepository.findOneByOrFail({
       id: originCategoryParam,
@@ -109,5 +111,46 @@ export class TransactionsService {
 
     await TransactionsRepository.save([originTransaction, destinyTransaction]);
     await AccountRepository.save([originAccount, destinyAccount]);
+  }
+  static async payCredit(data: {
+    origin: string;
+    credit_account: string;
+    value: number;
+    owner: UsersEntity;
+    description?: string;
+    date?: Date;
+  }) {
+    const originAccount = await AccountsService.findOneBy(data.owner, (qb) => {
+      qb.andWhere('a.id = :id', { id: data.origin });
+    });
+
+    const destinyAccount = await AccountsService.findOneBy(data.owner, (qb) => {
+      qb.andWhere('a.id= :id', { id: data.credit_account });
+    });
+
+    const originCategoryParam = await ParametersService.getByKey(
+      'credit_payment_category',
+      data.owner.id,
+    );
+
+    const originTransaction = TransactionsRepository.create({
+      description: data.description ?? 'Pagamento cartão de crédito',
+      value: data.value,
+      owner: data.owner,
+      category: originCategoryParam,
+      account: originAccount.id,
+      date: data.date || new Date().toISOString(),
+    } as unknown as TransactionsEntity);
+
+    originAccount.ammount = originAccount.ammount - data.value;
+    destinyAccount.ammount = destinyAccount.ammount + data.value;
+
+    await TransactionsRepository.save([originTransaction]);
+    await AccountRepository.save([originAccount, destinyAccount]);
+    return {
+      ...originTransaction,
+      account: originAccount.name,
+      credit_account: destinyAccount.name,
+    };
   }
 }

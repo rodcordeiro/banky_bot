@@ -14,7 +14,7 @@ export class AccountsService {
     if (filters) filters(qb);
     return await qb.where(`a.owner = :owner`, { owner: owner.id }).getMany();
   }
-  static async findBy(
+  static async findOneBy(
     owner: UsersEntity,
     filters: (qb: SelectQueryBuilder<AccountsEntity>) => void,
   ) {
@@ -22,6 +22,16 @@ export class AccountsService {
     qb.where(`a.owner = :owner`, { owner: owner.id });
     filters(qb);
     return await qb.getOneOrFail();
+  }
+  static async findBy(
+    owner: UsersEntity,
+    filters: (qb: SelectQueryBuilder<AccountsEntity>) => void,
+  ) {
+    const qb = AccountRepository.createQueryBuilder('a');
+    qb.leftJoinAndSelect('a.paymentType', 'b', 'a.paymentType = b.id');
+    qb.where(`a.owner = :owner`, { owner: owner.id });
+    filters(qb);
+    return await qb.getMany();
   }
 
   static async listPaymentTypes() {
