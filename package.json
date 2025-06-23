@@ -18,7 +18,7 @@
   "dependencies": {
     "@discordjs/builders": "^1.11.2",
     "@rodcordeiro/lib": "^1.2.0",
-    "discord.js": "^14.19.3",
+    "discord.js": "^14.20.0",
     "dotenv": "^16.5.0",
     "globals": "^16.2.0",
     "mysql": "^2.18.1",
