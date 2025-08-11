@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@discordjs/builders':
-        specifier: ^1.11.2
-        version: 1.11.2
+        specifier: ^1.11.3
+        version: 1.11.3
       '@rodcordeiro/lib':
         specifier: ^1.2.0
         version: 1.2.0
@@ -66,8 +66,8 @@ importers:
 
 packages:
 
-  '@discordjs/builders@1.11.2':
-    resolution: {integrity: sha512-F1WTABdd8/R9D1icJzajC4IuLyyS8f3rTOz66JsSI3pKvpCAtsMBweu8cyNYsIyvcrKAVn9EPK+Psoymq+XC0A==}
+  '@discordjs/builders@1.11.3':
+    resolution: {integrity: sha512-p3kf5eV49CJiRTfhtutUCeivSyQ/l2JlKodW1ZquRwwvlOWmG9+6jFShX6x8rUiYhnP6wKI96rgN/SXMy5e5aw==}
     engines: {node: '>=16.11.0'}
 
   '@discordjs/collection@1.5.3':
@@ -538,6 +538,9 @@ packages:
 
   discord-api-types@0.38.11:
     resolution: {integrity: sha512-XN0qhcQpetkyb/49hcDHuoeUPsQqOkb17wbV/t48gUkoEDi4ajhsxqugGcxvcN17BBtI9FPPWEgzv6IhQmCwyw==}
+
+  discord-api-types@0.38.18:
+    resolution: {integrity: sha512-ygenySjZKUaBf5JT8BNhZSxLzwpwdp41O0wVroOTu/N2DxFH7dxYTZUSnFJ6v+/2F3BMcnD47PC47u4aLOLxrQ==}
 
   discord.js@14.19.3:
     resolution: {integrity: sha512-lncTRk0k+8Q5D3nThnODBR8fR8x2fM798o8Vsr40Krx0DjPwpZCuxxTcFMrXMQVOqM1QB9wqWgaXPg3TbmlHqA==}
@@ -1159,12 +1162,12 @@ packages:
 
 snapshots:
 
-  '@discordjs/builders@1.11.2':
+  '@discordjs/builders@1.11.3':
     dependencies:
       '@discordjs/formatters': 0.6.1
       '@discordjs/util': 1.1.1
       '@sapphire/shapeshift': 4.0.0
-      discord-api-types: 0.38.11
+      discord-api-types: 0.38.18
       fast-deep-equal: 3.1.3
       ts-mixer: 6.0.4
       tslib: 2.8.1
@@ -1175,7 +1178,7 @@ snapshots:
 
   '@discordjs/formatters@0.6.1':
     dependencies:
-      discord-api-types: 0.38.11
+      discord-api-types: 0.38.18
 
   '@discordjs/rest@2.5.0':
     dependencies:
@@ -1184,7 +1187,7 @@ snapshots:
       '@sapphire/async-queue': 1.5.5
       '@sapphire/snowflake': 3.5.3
       '@vladfrangu/async_event_emitter': 2.4.6
-      discord-api-types: 0.38.11
+      discord-api-types: 0.38.18
       magic-bytes.js: 1.12.1
       tslib: 2.8.1
       undici: 6.21.1
@@ -1199,7 +1202,7 @@ snapshots:
       '@sapphire/async-queue': 1.5.5
       '@types/ws': 8.18.1
       '@vladfrangu/async_event_emitter': 2.4.6
-      discord-api-types: 0.38.11
+      discord-api-types: 0.38.18
       tslib: 2.8.1
       ws: 8.18.2
     transitivePeerDependencies:
@@ -1585,9 +1588,11 @@ snapshots:
 
   discord-api-types@0.38.11: {}
 
+  discord-api-types@0.38.18: {}
+
   discord.js@14.19.3:
     dependencies:
-      '@discordjs/builders': 1.11.2
+      '@discordjs/builders': 1.11.3
       '@discordjs/collection': 1.5.3
       '@discordjs/formatters': 0.6.1
       '@discordjs/rest': 2.5.0
